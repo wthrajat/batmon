@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
 
 jobs:
@@ -22,9 +22,10 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev
       - name: Build release
-        run: >-
-          cargo build --release
+        run: cargo build --release
       - name: Cache APT Packages
         uses: awalsh128/cache-apt-pkgs-action@v1.4.2
       - name: Upload binaries to release
