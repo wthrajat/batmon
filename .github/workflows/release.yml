@@ -22,9 +22,6 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - name: Cache APT Packages
-        uses: awalsh128/cache-apt-pkgs-action@v1.4.2
-            
       - name: Build release
         run: >-
           cargo build --release
